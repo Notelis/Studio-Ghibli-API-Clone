@@ -1,13 +1,19 @@
 const express = require('express');
 
-const books = require('./components/books/books-route');
-const users = require('./components/users/users-route');
+const films = require('./components/films/films-route');
+const locations = require('./components/locations/locations-route');
+const people = require('./components/people/people-route');
+const species = require('./components/species/species-route');
+const vehicle = require('./components/vehicle/vehicle-route');
 
 module.exports = () => {
   const app = express.Router();
 
-  books(app);
-  users(app);
+  films(app);
+  locations(app);
+  people(app);
+  species(app);
+  vehicle(app);
 
   return app;
 };
