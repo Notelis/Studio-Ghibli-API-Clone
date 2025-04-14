@@ -13,5 +13,3 @@ module.exports = (app) => {
   // Get List of people by id
   route.get('/:id', booksController.getPeopleById);
 };
-
-getPeopleById
