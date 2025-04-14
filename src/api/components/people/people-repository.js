@@ -11,24 +11,12 @@ async function getPeople(id) {
 }
 
 //Mencari people melalui name
-async function getUserByName(name) {
-  return people.findOne({ name });
-}
-
-//Membuat people baru
-async function createPeople(data) {
-  return people.create({ data });
-}
-
-//Menghapus people menggunakan id
-async function deletePeople(id) {
-  return people.deleteOne({ id });
+async function getPeopleByName(name) {
+  return people.findByName({ name });
 }
 
 module.exports = {
   getPeoples,
   getPeople,
   getPeopleByName,
-  createPeople,
-  deletePeople,
 };
