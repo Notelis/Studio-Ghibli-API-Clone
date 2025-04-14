@@ -3,7 +3,8 @@ const { errorResponder, errorTypes } = require('../../../core/errors');
 
 async function getLocations(request, response, next) {
   try {
-    const locations = await locationsService.getLocations();
+    const { name } = request.query;
+    const locations = await locationsService.getLocations({ name });
 
     return response.status(200).json(locations);
   } catch (error) {
@@ -13,13 +14,25 @@ async function getLocations(request, response, next) {
 
 async function getLocationById(request, response, next) {
     try {
-      const locationsId = await locationsService.getLocationById();
+    const id = request.params;
+      const locationsId = await locationsService.getLocationById(id);
   
       return response.status(200).json(locationsId);
     } catch (error) {
       return next(error);
     }
   }
+
+  async function getLocationByTerrain(request, response, next) {
+    try {
+      const { terrain } = request.query;
+      const locationsTerrain = await locationsService.getLocationByTerrain(terrain);
+
+      return response.status(200).json(locationsTerrain);
+    } catch (error) {
+      return next(error);
+    }
+}
 
 module.exports = {
   getLocations,
