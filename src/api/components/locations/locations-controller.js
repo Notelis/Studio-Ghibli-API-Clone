@@ -37,4 +37,5 @@ async function getLocationById(request, response, next) {
 module.exports = {
   getLocations,
   getLocationById,
+  getLocationByTerrain,
 };
