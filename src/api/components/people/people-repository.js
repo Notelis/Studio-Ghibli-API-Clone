@@ -12,7 +12,7 @@ async function getPeople(id) {
 
 //Mencari people melalui name
 async function getPeopleByName(name) {
-  return people.findOne({ name });
+  return people.findByName({ name });
 }
 
 module.exports = {
