@@ -2,11 +2,7 @@ module.exports = (db) =>
     db.model(
       'Locations',
       db.Schema({
-        id: { 
-          String, 
-          default: uuidv4,
-          unique,
-        },
+        id: String, unique,
         name: String,
         climate: String,
         terrain: String,
