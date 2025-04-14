@@ -9,7 +9,7 @@ async function getLocation(id){
 }
 
 async function getLocationByTerrain(terrain){
-    return locations.findOne({ terrain });
+    return locations.findByTerrain({ terrain });
 }
 
 module.exports = {
