@@ -5,13 +5,11 @@ const peopleController = require('./people-controller');
 const route = express.Router();
 
 module.exports = (app) => {
-  app.use('/books', route);
+  app.use('/people', route);
 
-  // Get list of books
+  // Get list of people
   route.get('/', peopleController.getPeople);
 
-  // Create a new book
+  // Get List of people by id
   route.get('/:id', booksController.getPeopleById);
 };
-
-getPeopleById

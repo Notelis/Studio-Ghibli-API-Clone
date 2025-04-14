@@ -1,0 +1,35 @@
+const vehicleService = require('./vehicle-service');
+const { errorResponder, errorTypes } = require('../../../core/errors');
+
+// Handler untuk GET /vehicles
+async function getVehicles(request, response, next) {
+  try {
+    const { fields, limit } = request.query;
+    const vehicles = await vehicleService.getVehicles({ fields, limit });
+
+    return response.status(200).json(vehicles);
+  } catch (error) {
+    return next(error);
+  }
+}
+
+// Handler untuk GET /vehicles/:id
+async function getVehicleById(request, response, next) {
+  try {
+    const { id } = request.params;
+    const vehicle = await vehicleService.getVehicleById(id);
+
+    if (!vehicle) {
+      return next(errorResponder(errorTypes.NOT_FOUND, 'Vehicle not found'));
+    }
+
+    return response.status(200).json(vehicle);
+  } catch (error) {
+    return next(error);
+  }
+}
+
+module.exports = {
+  getVehicles,
+  getVehicleById,
+};

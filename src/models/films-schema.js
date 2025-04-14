@@ -3,9 +3,7 @@ module.exports = (db) =>
       'films',
       db.Schema({
         id: { 
-          String, 
-          default: uuidv4,
-          unique,
+          String, unique,
         },
         title: String,
         original_title: String,
