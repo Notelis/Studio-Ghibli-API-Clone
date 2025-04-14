@@ -3,7 +3,7 @@ module.exports = (db) =>
       'people',
       db.Schema({
         id: { 
-          String, 
+          type: String, 
           default: uuidv4,
           unique,
         },
