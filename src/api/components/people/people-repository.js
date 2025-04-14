@@ -7,7 +7,7 @@ async function getPeoples() {
 
 //Mencari people melalui id
 async function getPeople(id) {
-  return people.findById(id);
+  return people.findOne({ id });
 }
 
 //Mencari people melalui name
