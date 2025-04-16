@@ -19,4 +19,4 @@ module.exports = (db) =>
         type: String, 
         unique: true },
     })
-  );
+  );     
