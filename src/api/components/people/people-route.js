@@ -8,8 +8,8 @@ module.exports = (app) => {
   app.use('/people', route);
 
   // Mendapatkan data semua people
-  route.get('/', peopleController.getPeople);
+  route.get('/', peopleController.getPeoples);
 
   // Mendapatkan data people berdasarkan id
-  route.get('/:id', peopleController.getPeopleById);
+  route.get('/:id', peopleController.getPeople);
 };

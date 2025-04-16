@@ -1,10 +1,10 @@
 const peopleService = require('./people-service');
 const { errorResponder, errorTypes } = require('../../../core/errors');
 
-async function getPeople(request, response, next) {
+async function getPeoples(request, response, next) {
   try {
     const { name } = request.query;
-    const people = await peopleService.getPeople({ name });
+    const people = await peopleService.getPeoples({ name });
 
     return response.status(200).json(people);
   } catch (error) {
@@ -12,10 +12,10 @@ async function getPeople(request, response, next) {
   }
 }
 
-async function getPeopleById(request, response, next) {
+async function getPeople(request, response, next) {
     try {
       const { id } = request.params;
-      const peopleId = await peopleService.getPeopleById(id);
+      const peopleId = await peopleService.getPeople(id);
       
       if (!peopleId) {
         throw errorResponder(errorTypes.RESOURCE_NOT_FOUND, 'Person not found');
@@ -28,6 +28,6 @@ async function getPeopleById(request, response, next) {
   }
 
 module.exports = {
+  getPeoples,
   getPeople,
-  getPeopleById,
 };
