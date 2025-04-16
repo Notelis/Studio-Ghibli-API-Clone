@@ -10,4 +10,4 @@ module.exports = (db) =>
       films: [String],
       url: String,
     })
-  );
+  );     

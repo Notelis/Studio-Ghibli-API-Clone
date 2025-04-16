@@ -9,11 +9,11 @@ async function getPeople(id) {
 }
 
 async function getPeopleByName(name) {
-  return peopleRepository.getPeopleByName({ name });
+  return peopleRepository.getPeopleByName(name);
 }
 
 module.exports = {
-    getPeoples,
-    getPeople,
-    getPeopleByName,
-  };
+  getPeoples,
+  getPeople,
+  getPeopleByName,
+};

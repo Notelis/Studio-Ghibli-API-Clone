@@ -7,9 +7,9 @@ const route = express.Router();
 module.exports = (app) => {
   app.use('/people', route);
 
-  // Get list of people
+  // Mendapatkan data semua people
   route.get('/', peopleController.getPeople);
 
-  // Get List of people by id
-  route.get('/:id', booksController.getPeopleById);
+  // Mendapatkan data people berdasarkan id
+  route.get('/:id', peopleController.getPeopleById);
 };

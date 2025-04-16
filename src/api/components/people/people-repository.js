@@ -7,12 +7,12 @@ async function getPeoples() {
 
 //Mencari people melalui id
 async function getPeople(id) {
-  return people.findOne({ id });
+  return people.findById(id);
 }
 
 //Mencari people melalui name
 async function getPeopleByName(name) {
-  return people.findByName({ name });
+  return people.find({ name });
 }
 
 module.exports = {
