@@ -10,13 +10,7 @@ async function getPeople(id) {
   return people.findById(id);
 }
 
-//Mencari people melalui name
-async function getPeopleByName(name) {
-  return people.find({ name });
-}
-
 module.exports = {
   getPeoples,
   getPeople,
-  getPeopleByName,
 };
