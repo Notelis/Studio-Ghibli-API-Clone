@@ -15,7 +15,4 @@ async function getSpeciesById(id) {
 module.exports = {
   getSpecies,
   getSpeciesById,
-  createSpecies,
-  updateSpecies,
-  deleteSpecies,
 };
