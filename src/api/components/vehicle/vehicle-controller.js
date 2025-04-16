@@ -1,7 +1,6 @@
-const vehicleService = require('./vehicle-service');
+const vehicleService = require('./vehicle-service'); 
 const { errorResponder, errorTypes } = require('../../../core/errors');
 
-// Handler untuk GET /vehicles
 async function getVehicles(request, response, next) {
   try {
     const { fields, limit } = request.query;
@@ -13,7 +12,6 @@ async function getVehicles(request, response, next) {
   }
 }
 
-// Handler untuk GET /vehicles/:id
 async function getVehicleById(request, response, next) {
   try {
     const { id } = request.params;
