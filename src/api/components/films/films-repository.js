@@ -1,4 +1,4 @@
-const { films } = require('../../..models');
+const { films } = require('../../../models');
 
 async function getFilms() {
     return films.find({});

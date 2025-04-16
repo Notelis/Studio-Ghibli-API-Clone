@@ -3,7 +3,8 @@ module.exports = (db) =>
       'films',
       db.Schema({
         id: { 
-          String, unique,
+          type: String, 
+          unique: true,
         },
         title: String,
         original_title: String,
@@ -18,6 +19,9 @@ module.exports = (db) =>
         species: [String],
         locations: [String],
         vehicles: [String],
-        url: String, unique,
+        url: {
+          type: String,
+          unique: true,
+        },
       })
     );

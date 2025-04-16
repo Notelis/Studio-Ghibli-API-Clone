@@ -1,4 +1,4 @@
-const { locations } = require('../../..models');
+const { locations } = require('../../../models');
 
 async function getLocations() {
     return locations.find({});

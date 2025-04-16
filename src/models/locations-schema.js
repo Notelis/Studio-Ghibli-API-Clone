@@ -2,13 +2,19 @@ module.exports = (db) =>
     db.model(
       'Locations',
       db.Schema({
-        id: String, unique,
+        id: {
+          type: String, 
+          unique: true,
+        },
         name: String,
         climate: String,
         terrain: String,
         surface_water: String,
         residents: [String],
         films: [String],
-        url: String, unique,
+        url: {
+          type: String, 
+          unique: true,
+        },
       })
     );
