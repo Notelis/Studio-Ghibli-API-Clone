@@ -3,8 +3,8 @@ module.exports = (db) =>
     'people',
     new db.Schema({
       name: String,
-      age: String,
       gender: String,
+      age: String,
       eye_color: String,
       hair_color: String,
       films: [String],
