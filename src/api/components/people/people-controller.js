@@ -14,8 +14,12 @@ async function getPeople(request, response, next) {
 
 async function getPeopleById(request, response, next) {
     try {
-      const id = request.params;
+      const { id } = request.params;
       const peopleId = await peopleService.getPeopleById(id);
+      
+      if (!peopleId) {
+        throw errorResponder(errorTypes.RESOURCE_NOT_FOUND, 'Person not found');
+      }
   
       return response.status(200).json(peopleId);
     } catch (error) {
