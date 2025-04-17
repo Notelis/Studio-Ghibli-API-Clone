@@ -14,7 +14,7 @@ async function getLocations(request, response, next) {
 
 async function getLocationById(request, response, next) {
     try {
-    const id = request.params;
+    const { id } = request.params;
       const locationsId = await locationsService.getLocationById(id);
   
       return response.status(200).json(locationsId);
@@ -22,6 +22,7 @@ async function getLocationById(request, response, next) {
       return next(error);
     }
   }
+
 
   async function getLocationByTerrain(request, response, next) {
     try {

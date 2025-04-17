@@ -4,8 +4,8 @@ async function getLocations() {
     return locationsRepository.getLocations();
 }
 
-async function getLocation(id){
-    return locationsRepository.getLocation(id);
+async function getLocationById(id){
+    return locationsRepository.getLocationById(id);
 }
 
 async function getLocationByTerrain(terrain){
@@ -14,6 +14,6 @@ async function getLocationByTerrain(terrain){
 
 module.exports = {
     getLocations,
-    getLocation,
+    getLocationById,
     getLocationByTerrain,
 }
