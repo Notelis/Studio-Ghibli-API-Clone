@@ -4,7 +4,7 @@ const { errorResponder, errorTypes } = require('../../../core/errors');
 async function getFilms(request, response, next) {
   try {
     const { title } = request.query;
-    const films = await filmsService.getfilms({ title });
+    const films = await filmsService.getFilms({ title });
 
     return response.status(200).json(films); 
    } catch (error) { 
@@ -14,7 +14,7 @@ async function getFilms(request, response, next) {
 
 async function getFilmById(request, response, next) {
     try { 
-        const id = request.params;
+        const { id } = request.params;
         const filmId = await filmsService.getFilm(id);
         
         return response.status(200).json(filmId);

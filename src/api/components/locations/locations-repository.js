@@ -4,7 +4,7 @@ async function getLocations() {
     return locations.find({});
 }
 
-async function getLocation(id){
+async function getLocationById(id){
     return locations.findById(id);
 }
 
@@ -14,6 +14,6 @@ async function getLocationByTerrain(terrain){
 
 module.exports = {
     getLocations,
-    getLocation,
+    getLocationById,
     getLocationByTerrain,
 }

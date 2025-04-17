@@ -1,13 +1,13 @@
-const { people } = require('../../../models');
+const { People } = require('../../../models');
 
 //Mendapatkan data people
 async function getPeoples() {
-  return people.find({});
+  return People.find({});
 }
 
 //Mencari people melalui id
 async function getPeople(id) {
-  return people.findById(id);
+  return People.findById(id);
 }
 
 module.exports = {
