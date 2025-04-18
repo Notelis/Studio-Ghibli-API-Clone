@@ -3,14 +3,23 @@ const { errorResponder, errorTypes } = require('../../../core/errors');
 
 async function getPeoples(request, response, next) {
   try {
-    const { name } = request.query;
-    const people = await peopleService.getPeoples({ name });
+    const { name, limit, offset } = request.query;
+
+    const parsedLimit = parseInt(limit, 10) || 0;
+    const parsedOffset = parseInt(offset, 10) || 0;
+
+    const people = await peopleService.getPeoples({
+      name,
+      limit: parsedLimit,
+      offset: parsedOffset,
+    });
 
     return response.status(200).json(people);
   } catch (error) {
     return next(error);
   }
 }
+
 
 async function getPeople(request, response, next) {
     try {
