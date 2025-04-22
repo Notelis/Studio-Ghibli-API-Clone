@@ -2,7 +2,7 @@ const express = require('express');
 
 const speciesController = require('./species-controller');
 
-const authMiddleware = require('../../../../utils/authentication-token');
+const authMiddleware = require('../../../../utils/authenticate-token');
 
 const route = express.Router();
  
