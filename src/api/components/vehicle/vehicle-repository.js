@@ -7,7 +7,7 @@ async function getVehicles(offset = 0, limit = 10) {
 }
 
 async function getVehicleById(id) {
-  return Vehicles.findOne({ id });
+  return Vehicles.findById(id);
 }
 
 module.exports = {
