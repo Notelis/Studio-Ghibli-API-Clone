@@ -28,9 +28,20 @@ async function hashPassword(password) {
  * @param {string} hashedPassword - A hashed password
  * @returns {boolean}
  */
+
 async function passwordMatched(password, hashedPassword) {
   return bcrypt.compareSync(password, hashedPassword);
 }
+
+(async () => {
+    const myPassword = 'studioghibli'; // password yg mau dihash
+    const hashed = await hashPassword(myPassword);
+  
+    console.log('Hashed password:', hashed);
+  
+    const isMatch = await passwordMatched(myPassword, hashed);
+    console.log('Password match:', isMatch); // true
+  })();
 
 module.exports = {
   hashPassword,
