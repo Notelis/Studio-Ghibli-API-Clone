@@ -3,8 +3,8 @@ const { errorResponder, errorTypes } = require('../../../core/errors');
 
 async function getVehicles(request, response, next) {
   try {
-    const { fields, limit } = request.query;
-    const vehicles = await vehicleService.getVehicles({ fields, limit });
+    const { fields, limit, offset } = request.query;
+    const vehicles = await vehicleService.getVehicles({ fields, limit, offset });
 
     return response.status(200).json(vehicles);
   } catch (error) {

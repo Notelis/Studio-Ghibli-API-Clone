@@ -1,19 +1,14 @@
 const locationsRepository = require('./locations-repository');
 
-async function getLocations() {
-    return locationsRepository.getLocations();
+async function getLocations({ name, terrain, limit, offset }) {
+    return locationsRepository.getLocations({ name, terrain }, limit, offset);
 }
 
 async function getLocationById(id){
     return locationsRepository.getLocationById(id);
 }
 
-async function getLocationByTerrain(terrain){
-    return locationsRepository.getLocationByTerrain({ terrain });
-}
-
 module.exports = {
     getLocations,
     getLocationById,
-    getLocationByTerrain,
 }

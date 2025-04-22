@@ -1,6 +1,6 @@
 const vehiclesRepository = require('./vehicle-repository');
 
-async function getVehicles(offset = 0, limit = 50) {
+async function getVehicles({ offset = 0, limit = 50 }) {
   return vehiclesRepository.getVehicles(offset, limit);
 }
 
