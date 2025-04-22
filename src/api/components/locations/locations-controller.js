@@ -3,8 +3,17 @@ const { errorResponder, errorTypes } = require('../../../core/errors');
 
 async function getLocations(request, response, next) {
   try {
-    const { name } = request.query;
-    const locations = await locationsService.getLocations({ name });
+    const { name, terrain, limit, offset } = request.query;
+  
+    const parsedLimit = parseInt(limit, 10) || 0;
+    const parsedOffset = parseInt(offset, 10) || 0;
+  
+    const locations = await locationsService.getLocations({
+      name,
+      terrain,
+      limit: parsedLimit,
+      offset: parsedOffset,
+    });
 
     return response.status(200).json(locations);
   } catch (error) {
@@ -13,30 +22,21 @@ async function getLocations(request, response, next) {
 }
 
 async function getLocationById(request, response, next) {
-    try {
+  try {
     const { id } = request.params;
-      const locationsId = await locationsService.getLocationById(id);
-  
-      return response.status(200).json(locationsId);
-    } catch (error) {
-      return next(error);
+    const locationsId = await locationsService.getLocationById(id);
+
+    if (!locationsId) {
+      throw errorResponder(errorTypes.RESOURCE_NOT_FOUND, 'Location not found');
     }
+      
+    return response.status(200).json(locationsId);
+  } catch (error) {
+    return next(error);
   }
-
-
-  async function getLocationByTerrain(request, response, next) {
-    try {
-      const { terrain } = request.query;
-      const locationsTerrain = await locationsService.getLocationByTerrain(terrain);
-
-      return response.status(200).json(locationsTerrain);
-    } catch (error) {
-      return next(error);
-    }
 }
 
 module.exports = {
   getLocations,
   getLocationById,
-  getLocationByTerrain,
 };
