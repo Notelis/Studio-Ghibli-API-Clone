@@ -11,7 +11,7 @@ function authenticateToken(req, res, next) {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'rahasia');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'default');
     req.user = decoded; // if token is valid, save user info to req
     next();
   } catch (err) {

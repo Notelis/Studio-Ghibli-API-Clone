@@ -22,7 +22,7 @@ async function login(email, password) {
       id: user._id, //payload
       email: user.email, //payload
     },
-    process.env.JWT_SECRET || 'secret', // secret key
+    process.env.JWT_SECRET || 'default', 
     { expiresIn: '1h' } // expires in 1 hour
   );
 
