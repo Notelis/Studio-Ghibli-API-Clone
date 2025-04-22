@@ -1,7 +1,7 @@
 const filmsRepository = require('./films-repository');
 
-async function getFilms() {
-  return filmsRepository.getFilms();
+async function getFilms({ producer, director, name, limit, offset }) {
+  return peopleRepository.getPeoples({ producer, director, name }, limit, offset);
 }
 
 async function getFilm(id) {
