@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authRepository = require('./auth-repository');
+const { errorResponder, errorTypes } = require('../../../core/errors');
 
 async function login(email, password) {
   const user = await authRepository.getUserByEmail(email);
