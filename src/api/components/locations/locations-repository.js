@@ -11,7 +11,7 @@ async function getLocations(filter = {}, limit = 0, offset = 0) {
         query.terrain = new RegExp(filter.terrain, 'i');
       }
   
-    return People.find(query)
+    return locations.find(query)
       .skip(offset)
       .limit(limit);
   }
