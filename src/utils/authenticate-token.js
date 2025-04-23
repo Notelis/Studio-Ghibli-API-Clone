@@ -1,24 +1,25 @@
 const jwt = require('jsonwebtoken');
+const { errorResponder, errorTypes } = require('../core/errors'); // pastikan path sesuai
+const config = require('../core/config');
 
-// Middleware to authenticate token
 function authenticateToken(req, res, next) {
-  const authHeader = req.headers.authorization; // get authorization header from request
-  const token = authHeader && authHeader.split(' ')[1]; // if theres a header, split & get the token only -> Bearer <Token>
+  const authHeader = req.headers.authorization;
+  const token = authHeader && authHeader.split(' ')[1];
 
-  // if there is no token
   if (!token) {
-    throw errorResponder(errorTypes.TOKEN_VERIFY, 'Token is required');
+    return next(errorResponder(errorTypes.TOKEN_VERIFY, 'Token is required'));
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'default');
-    req.user = decoded; // if token is valid, save user info to req
-    next();
+    const decoded = jwt.verify(token, config.jwtSecret || 'default');
+    req.user = decoded;
+    next(); // lanjut ke controller
   } catch (err) {
-    // if token expired
     if (err.name === 'TokenExpiredError') {
-      throw errorResponder(errorTypes.TOKEN_EXPIRED, 'Token has expired');
+      return next(errorResponder(errorTypes.TOKEN_EXPIRED, 'Token has expired'));
     }
+
+    return next(errorResponder(errorTypes.TOKEN_VERIFY, 'Invalid token'));
   }
 }
 
