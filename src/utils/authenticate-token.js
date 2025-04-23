@@ -12,7 +12,7 @@ function authenticateToken(req, res, next) {
   }
 
   try {
-    const decoded = jwt.verify(token, config.jwtSecret || 'default');
+    const decoded = jwt.verify(token, config.jwtSecret || 'rahasia'); //secret
     req.user = decoded;
     next(); // lanjut ke controller
   } catch (err) {
