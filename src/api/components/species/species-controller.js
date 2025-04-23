@@ -3,7 +3,7 @@ const { errorResponder, errorTypes } = require('../../../core/errors');
 
 async function getSpecies(request, response, next) {
   try {
-    const speciesList = await speciesService.getSpecies();
+    const speciesList = await speciesService.getSpecies({fields, limit, offset});
     
     return response.status(200).json(speciesList);
   } catch (error) {
