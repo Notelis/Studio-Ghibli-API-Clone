@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { errorResponder, errorTypes } = require('../core/errors'); // pastikan path sesuai
+// Middleware to authenticate token
 const config = require('../core/config');
 
 function authenticateToken(req, res, next) {
@@ -18,7 +19,6 @@ function authenticateToken(req, res, next) {
     if (err.name === 'TokenExpiredError') {
       return next(errorResponder(errorTypes.TOKEN_EXPIRED, 'Token has expired'));
     }
-
     return next(errorResponder(errorTypes.TOKEN_VERIFY, 'Invalid token'));
   }
 }
