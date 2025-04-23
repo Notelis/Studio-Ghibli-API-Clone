@@ -8,13 +8,13 @@ async function login(email, password) {
   
   // if user not found
   if (!user) {
-    throw errorResponder(errorTypes.INVALID_CREDENTIALS, 'Email not found');
+    return next(errorResponder(errorTypes.INVALID_CREDENTIALS, 'Email not found'));
   }
 
   // if password doesnt match
   const match = await bcrypt.compare(password, user.password);
   if (!match) {
-    throw errorResponder(errorTypes.INVALID_CREDENTIALS, 'Incorrect password');
+    return next(errorResponder(errorTypes.INVALID_CREDENTIALS, 'Incorrect password'));
   }
 
   // create jwt
