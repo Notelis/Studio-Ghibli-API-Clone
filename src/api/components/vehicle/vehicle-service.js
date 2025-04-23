@@ -8,12 +8,9 @@ async function getVehicleById(id) {
   return vehiclesRepository.getVehicleById(id);
 }
 
-async function createVehicle(data) {
-  return vehiclesRepository.createVehicle(data);
-}
+
 
 module.exports = {
   getVehicles,
-  getVehicleById,
-  createVehicle,  
+  getVehicleById, 
 };
