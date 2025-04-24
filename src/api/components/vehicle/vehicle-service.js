@@ -12,6 +12,5 @@ async function getVehicleById(id) {
 
 module.exports = {
   getVehicles,
-  getVehicleById,
-
+  getVehicleById, 
 };
