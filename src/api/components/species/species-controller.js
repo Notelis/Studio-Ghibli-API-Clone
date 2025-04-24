@@ -3,17 +3,10 @@ const { errorResponder, errorTypes } = require('../../../core/errors');
 
 async function getSpecies(request, response, next) {
   try {
-    const { fields, limit, offset } = request.query
-
-    const parsedLimit = parseInt(limit, 10) || 0;
-    const parsedOffset = parseInt(offset, 10) || 0;
-
-    const species = await speciesService.getSpecies({
-      fields,
-      limit: parsedLimit,
-      offset: parsedOffset,
-    })
-    return response.status(200).json(species);
+    const { fields, limit, offset } = request.query;
+    const speciesList = await speciesService.getSpecies({fields, limit, offset});
+    
+    return response.status(200).json(speciesList);
   } catch (error) {
     return next(error);
   }
@@ -21,6 +14,7 @@ async function getSpecies(request, response, next) {
 
 async function getSpeciesById(request, response, next) {
   try {
+    const { id } = request.params;
     const species = await speciesService.getSpeciesById(request.params.id);
 
     if (!species) {
