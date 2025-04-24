@@ -1,12 +1,16 @@
 const { Species } = require('../../../models');
 
-// Get all species
+async function getSpecies(filter = {}, limit = 0, offset = 0) {
+  const query = {};
 
-async function getSpecies() {
-  return Species.find({});
+  if (filter.name) {
+    query.name = new RegExp(filter.name, 'i');
+  }
+
+  return Species.find(query)
+    .skip(offset)
+    .limit(limit);
 }
-
-// Get a species by ID
 
 async function getSpeciesById(id) {
   return Species.findById(id);
@@ -16,3 +20,4 @@ module.exports = {
   getSpecies,
   getSpeciesById,
 };
+
