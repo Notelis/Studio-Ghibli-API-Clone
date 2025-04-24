@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authRepository = require('./auth-repository');
+const { errorResponder, errorTypes } = require('../../../core/errors');
 
 async function login(email, password) {
   const user = await authRepository.getUserByEmail(email);
@@ -22,7 +23,7 @@ async function login(email, password) {
       id: user._id, //payload
       email: user.email, //payload
     },
-    process.env.JWT_SECRET || 'secret', // secret key
+    process.env.JWT_SECRET || 'rahasia', 
     { expiresIn: '1h' } // expires in 1 hour
   );
 

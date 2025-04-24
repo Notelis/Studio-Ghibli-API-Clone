@@ -1,4 +1,3 @@
-require('dotenv').config();
 const { env, port } = require('./core/config');
 const logger = require('./core/logger')('app');
 const server = require('./core/server');
@@ -23,3 +22,5 @@ process.on('uncaughtException', (err) => {
   setTimeout(() => process.abort(), 1000).unref();
   process.exit(1);
 });
+
+console.log('JWT_SECRET:', process.env.JWT_SECRET); // Ini harusnya output secret key yang kamu set di .env
