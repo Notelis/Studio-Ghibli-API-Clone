@@ -3,8 +3,28 @@ const { errorResponder, errorTypes } = require('../../../core/errors');
 
 async function getVehicles(request, response, next) {
   try {
-    const { fields, limit, offset } = request.query;
-    const vehicles = await vehicleService.getVehicles({ fields, limit, offset });
+    const {limit, offset, name, vehicle_class } = request.query;
+
+    // Menyiapkan parsed limit dan offset
+    const parsedLimit = parseInt(limit, 10) || 50; 
+    const parsedOffset = parseInt(offset, 10) || 0; 
+    
+
+    const filter = {};
+
+    if (name) {
+      filter.name = new RegExp(name, 'i');  // Menambahkan filter untuk name
+    }
+
+    if (vehicle_class) {
+      filter.vehicle_class = new RegExp(vehicle_class, 'i');  // Menambahkan filter untuk vehicle_class
+    }
+
+    const vehicles = await vehicleService.getVehicles({
+      filters: filter,
+      limit: parsedLimit,
+      offset: parsedOffset
+    });
 
     return response.status(200).json(vehicles);
   } catch (error) {
